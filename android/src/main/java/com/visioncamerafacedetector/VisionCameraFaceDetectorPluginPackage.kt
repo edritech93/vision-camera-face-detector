@@ -7,10 +7,13 @@ import com.facebook.react.uimanager.ViewManager
 import com.mrousavy.camera.frameprocessor.FrameProcessorPluginRegistry
 
 class VisionCameraFaceDetectorPluginPackage : ReactPackage {
-  override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
+  init {
     FrameProcessorPluginRegistry.addFrameProcessorPlugin("scanFace") { _ ->
       VisionCameraFaceDetectorPlugin()
     }
+  }
+
+  override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
     return listOf(VisionCameraFaceDetectorModule(reactContext))
   }
 

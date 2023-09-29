@@ -4,6 +4,8 @@ const pak = require('../package.json');
 module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
   plugins: [
+    ['react-native-reanimated/plugin'],
+    ['react-native-worklets-core/plugin'],
     [
       'module-resolver',
       {
@@ -11,12 +13,6 @@ module.exports = {
         alias: {
           [pak.name]: path.join(__dirname, '..', pak.source),
         },
-      },
-    ],
-    [
-      'react-native-reanimated/plugin',
-      {
-        globals: ['__scanFaces'],
       },
     ],
   ],

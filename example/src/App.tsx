@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { Camera, useFrameProcessor } from 'react-native-vision-camera';
-import { scanFaces, type Face } from 'vision-camera-face-detector';
+import { scanFaces, type FaceType } from 'vision-camera-face-detector';
 import { runOnJS } from 'react-native-reanimated';
 
 export default function App() {
   const [hasPermission, setHasPermission] = useState(false);
-  const [faces, setFaces] = useState<Face[]>();
+  const [faces, setFaces] = useState<FaceType[]>();
   const [device, setDevice] = useState<any>(null);
 
   useEffect(() => {
