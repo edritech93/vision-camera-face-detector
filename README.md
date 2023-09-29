@@ -1,3 +1,6 @@
+fork from: https://github.com/rodgomesc/vision-camera-face-detector
+reason: old repo not maintenance
+
 # vision-camera-face-detector
 
 VisionCamera Frame Processor Plugin to detect faces using MLKit Vision Face Detector
