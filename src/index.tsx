@@ -2,10 +2,13 @@ import { NativeModules, Platform } from 'react-native';
 import { VisionCameraProxy, type Frame } from 'react-native-vision-camera';
 import type { Face } from './Face';
 
-const plugin: any = VisionCameraProxy.getFrameProcessorPlugin('scanFaces');
+const plugin = VisionCameraProxy.getFrameProcessorPlugin('scanFace');
 
-export function scanFaces(frame: Frame): Face[] {
+export function scanFaces(frame: Frame): any {
   'worklet';
+  if (plugin == null) {
+    throw new Error('Failed to load Frame Processor Plugin!');
+  }
   return plugin.call(frame);
 }
 

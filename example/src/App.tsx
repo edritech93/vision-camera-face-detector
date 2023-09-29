@@ -12,7 +12,7 @@ export default function App() {
   useEffect(() => {
     async function _getCameras() {
       const arrayDev = Camera.getAvailableCameraDevices();
-      const devBack = arrayDev.find((e) => e.position === 'back');
+      const devBack = arrayDev.find((e) => e.position === 'front');
       setDevice(devBack);
     }
     _getCameras();
@@ -32,6 +32,7 @@ export default function App() {
 
   const frameProcessor = useFrameProcessor((frame) => {
     'worklet';
+    console.log('frame => ', frame);
     const scannedFaces = scanFaces(frame);
     runOnJS(setFaces)(scannedFaces);
   }, []);
