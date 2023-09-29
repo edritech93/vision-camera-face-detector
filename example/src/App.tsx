@@ -1,33 +1,34 @@
-/* eslint-disable react-native/no-inline-styles */
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet } from 'react-native';
+import { Camera, useFrameProcessor } from 'react-native-vision-camera';
+import { scanFaces, type Face } from 'vision-camera-face-detector';
 import { runOnJS } from 'react-native-reanimated';
 
-import { StyleSheet } from 'react-native';
-import {
-  useCameraDevices,
-  useFrameProcessor,
-} from 'react-native-vision-camera';
-
-import { Camera } from 'react-native-vision-camera';
-import { scanFaces, Face } from 'vision-camera-face-detector';
-
 export default function App() {
-  const [hasPermission, setHasPermission] = React.useState(false);
-  const [faces, setFaces] = React.useState<Face[]>();
+  const [hasPermission, setHasPermission] = useState(false);
+  const [faces, setFaces] = useState<Face[]>();
+  const [device, setDevice] = useState<any>(null);
 
-  const devices = useCameraDevices();
-  const device = devices.front;
+  useEffect(() => {
+    async function _getCameras() {
+      const arrayDev = Camera.getAvailableCameraDevices();
+      const devBack = arrayDev.find((e) => e.position === 'back');
+      setDevice(devBack);
+    }
+    _getCameras();
+  }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
+    async function _getPermission() {
+      const status = await Camera.requestCameraPermission();
+      setHasPermission(status === 'granted');
+    }
+    _getPermission();
+  }, []);
+
+  useEffect(() => {
     console.log(faces);
   }, [faces]);
-
-  React.useEffect(() => {
-    (async () => {
-      const status = await Camera.requestCameraPermission();
-      setHasPermission(status === 'authorized');
-    })();
-  }, []);
 
   const frameProcessor = useFrameProcessor((frame) => {
     'worklet';
@@ -40,8 +41,8 @@ export default function App() {
       style={StyleSheet.absoluteFill}
       device={device}
       isActive={true}
+      fps={5}
       frameProcessor={frameProcessor}
-      frameProcessorFps={5}
     />
   ) : null;
 }

@@ -1,61 +1,111 @@
 buildscript {
-    if (project == rootProject) {
-        repositories {
-            google()
-            jcenter()
-        }
+  // Buildscript is evaluated before everything else so we can't use getExtOrDefault
+  def kotlin_version = rootProject.ext.has("kotlinVersion") ? rootProject.ext.get("kotlinVersion") : project.properties["VisionCameraFaceDetector_kotlinVersion"]
 
-        dependencies {
-            classpath 'com.android.tools.build:gradle:3.5.3'
-        }
-    }
+  repositories {
+    google()
+    mavenCentral()
+  }
+
+  dependencies {
+    classpath "com.android.tools.build:gradle:7.2.1"
+    // noinspection DifferentKotlinGradleVersion
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+  }
 }
 
-apply plugin: 'com.android.library'
+def isNewArchitectureEnabled() {
+  return rootProject.hasProperty("newArchEnabled") && rootProject.getProperty("newArchEnabled") == "true"
+}
 
-def safeExtGet(prop, fallback) {
-    rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
+
+
+def appProject = rootProject.allprojects.find { it.plugins.hasPlugin('com.android.application') }
+
+if (isNewArchitectureEnabled()) {
+  apply plugin: "com.facebook.react"
+}
+
+def getExtOrDefault(name) {
+  return rootProject.ext.has(name) ? rootProject.ext.get(name) : project.properties["VisionCameraFaceDetector_" + name]
+}
+
+def getExtOrIntegerDefault(name) {
+  return rootProject.ext.has(name) ? rootProject.ext.get(name) : (project.properties["VisionCameraFaceDetector_" + name]).toInteger()
+}
+
+def supportsNamespace() {
+  def parsed = com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION.tokenize('.')
+  def major = parsed[0].toInteger()
+  def minor = parsed[1].toInteger()
+
+  // Namespace support was added in 7.3.0
+  if (major == 7 && minor >= 3) {
+    return true
+  }
+
+  return major >= 8
 }
 
 android {
-    compileSdkVersion safeExtGet('VisionCameraFaceDetector_compileSdkVersion', 30)
-    defaultConfig {
-        minSdkVersion safeExtGet('VisionCameraFaceDetector_minSdkVersion', 21)
-        targetSdkVersion safeExtGet('VisionCameraFaceDetector_targetSdkVersion', 31)
-        versionCode 1
-        versionName "1.0"
+  if (supportsNamespace()) {
+    namespace "com.visioncamerafacedetector"
 
+    sourceSets {
+      main {
+        manifest.srcFile "src/main/AndroidManifestNew.xml"
+      }
     }
+  }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-        }
+  compileSdkVersion getExtOrIntegerDefault("compileSdkVersion")
+
+  defaultConfig {
+    minSdkVersion getExtOrIntegerDefault("minSdkVersion")
+    targetSdkVersion getExtOrIntegerDefault("targetSdkVersion")
+    buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
     }
-    lintOptions {
-        disable 'GradleCompatible'
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+  }
+
+  lintOptions {
+    disable "GradleCompatible"
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
 }
 
 repositories {
-    mavenLocal()
-    maven {
-        // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
-        url("$rootDir/../node_modules/react-native/android")
-    }
-    google()
-    jcenter()
+  mavenCentral()
+  google()
 }
 
+def kotlin_version = getExtOrDefault("kotlinVersion")
+
 dependencies {
-    //noinspection GradleDynamicVersion
-    implementation "com.facebook.react:react-native:+"  // From node_modules
-    implementation 'androidx.annotation:annotation:1.1.0'
-    api project(":react-native-vision-camera")
-    implementation "androidx.camera:camera-core:1.1.0-alpha06"
-    implementation 'com.google.mlkit:face-detection:16.1.2'
+  // For < 0.71, this will be from the local maven repo
+  // For > 0.71, this will be replaced by `com.facebook.react:react-android:$version` by react gradle plugin
+  //noinspection GradleDynamicVersion
+  implementation "com.facebook.react:react-native:+"
+  implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+  api project(":react-native-vision-camera")
+  implementation "androidx.camera:camera-core:1.4.0-alpha01"
+  implementation 'com.google.mlkit:face-detection:16.1.5'
+}
+
+if (isNewArchitectureEnabled()) {
+  react {
+    jsRootDir = file("../src/")
+    libraryName = "VisionCameraFaceDetector"
+    codegenJavaPackageName = "com.visioncamerafacedetector"
+  }
 }
