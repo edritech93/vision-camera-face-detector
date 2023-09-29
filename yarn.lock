@@ -13020,6 +13020,7 @@ __metadata:
     react: 18.2.0
     react-native: 0.72.5
     react-native-reanimated: ^3.5.4
+    react-native-vision-camera: ^3.1.0
   languageName: unknown
   linkType: soft
 
@@ -13052,7 +13053,7 @@ __metadata:
   peerDependencies:
     react: "*"
     react-native: "*"
-    react-native-vision-camera: ">= 3"
+    react-native-vision-camera: ">= 2"
   languageName: unknown
   linkType: soft
 
