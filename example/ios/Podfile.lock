@@ -522,7 +522,7 @@ PODS:
   - vision-camera-face-detector (1.0.0):
     - RCT-Folly (= 2021.07.22.00)
     - React-Core
-  - VisionCamera (3.1.0):
+  - VisionCamera (3.2.2):
     - React
     - React-callinvoker
     - React-Core
@@ -761,7 +761,7 @@ SPEC CHECKSUMS:
   RNReanimated: ab2e96c6d5591c3dfbb38a464f54c8d17fb34a87
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   vision-camera-face-detector: 70cf70841ad7a64e24c66815b78c9e282dc58cc0
-  VisionCamera: 5716d5c3f2e5cbcf0e58e30e91b09b2fbb1f12ef
+  VisionCamera: cb27c70cea1439e9a946bf2acdc059f8fb1bc68c
   Yoga: 86fed2e4d425ee4c6eab3813ba1791101ee153c6
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 

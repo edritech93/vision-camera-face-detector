@@ -1893,9 +1893,9 @@ __metadata:
   linkType: hard
 
 "@eslint-community/regexpp@npm:^4.4.0, @eslint-community/regexpp@npm:^4.6.1":
-  version: 4.9.0
-  resolution: "@eslint-community/regexpp@npm:4.9.0"
-  checksum: 82411f0643ab9bfd271bf12c8c75031266b13595d9371585ee3b0d680d918d4abf37c7e94d0da22e45817c9bbc59b79dfcbd672050dfb00af88fb89c80fd420f
+  version: 4.9.1
+  resolution: "@eslint-community/regexpp@npm:4.9.1"
+  checksum: 06fb839e9c756f6375cc545c2f2e05a0a64576bd6370e8e3c07983fd29a3d6e164ef4aa48a361f7d27e6713ab79c83053ff6a2ccb78748bc955e344279c4a3b6
   languageName: node
   linkType: hard
 
@@ -3162,9 +3162,9 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
-  version: 20.7.1
-  resolution: "@types/node@npm:20.7.1"
-  checksum: 3140bd6c9130f1ed73a78ce7a1765ee43e155c1eea50eea45e18faeb31d11d97a84fffdc5e3a97582101d2f57d2652a50f510ede6c702780267bad74c822d56c
+  version: 20.8.2
+  resolution: "@types/node@npm:20.8.2"
+  checksum: 3da73e25d821bfcdb7de98589027e08bb4848e55408671c4a83ec0341e124b5313a0b20e1e4b4eff1168ea17a86f622ad73fcb04b761abd77496b9a27cbd5de5
   languageName: node
   linkType: hard
 
@@ -3197,9 +3197,9 @@ __metadata:
   linkType: hard
 
 "@types/prop-types@npm:*":
-  version: 15.7.7
-  resolution: "@types/prop-types@npm:15.7.7"
-  checksum: 023b95f7dd82e1c594f51dcb93ec4c382600cef6eeee29a2ac7b782b92c0882eab8da16d4cbd6e18b39e85ac8d94ebf4ca02c6e248ce5b5fb4b16dbab5d82861
+  version: 15.7.8
+  resolution: "@types/prop-types@npm:15.7.8"
+  checksum: 61dfad79da8b1081c450bab83b77935df487ae1cdd4660ec7df6be8e74725c15fa45cf486ce057addc956ca4ae78300b97091e2a25061133d1b9a1440bc896ae
   languageName: node
   linkType: hard
 
@@ -4163,7 +4163,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist@npm:^4.20.4, browserslist@npm:^4.21.10, browserslist@npm:^4.21.9":
+"browserslist@npm:^4.20.4, browserslist@npm:^4.21.9, browserslist@npm:^4.22.1":
   version: 4.22.1
   resolution: "browserslist@npm:4.22.1"
   dependencies:
@@ -4358,9 +4358,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001541":
-  version: 1.0.30001541
-  resolution: "caniuse-lite@npm:1.0.30001541"
-  checksum: 972f6c223cf4ea2c6821b817b419249285006bbf67ebe415fe58097cf07551e3bae898586736d92f7c40b9f0ac28638dbf760631c23742b780affd0254f44d17
+  version: 1.0.30001542
+  resolution: "caniuse-lite@npm:1.0.30001542"
+  checksum: 6cf20e2e1fd4c14f98a3cc73df650903bb5fc896c5b7416ada10c3e2c17e905e3d5688e5a201bfc0eebdf2e3d19e1825e21ad03e4d06f2d50f6b1c9f4b837f98
   languageName: node
   linkType: hard
 
@@ -4994,11 +4994,11 @@ __metadata:
   linkType: hard
 
 "core-js-compat@npm:^3.31.0, core-js-compat@npm:^3.32.2":
-  version: 3.32.2
-  resolution: "core-js-compat@npm:3.32.2"
+  version: 3.33.0
+  resolution: "core-js-compat@npm:3.33.0"
   dependencies:
-    browserslist: ^4.21.10
-  checksum: efca146ad71a542e6f196db5ba5aed617e48c615bdf1fbb065471b3267f833ac545bd5fc5ad0642c3d3974b955f0684ff0863d7471d7050ee0284e0a1313942e
+    browserslist: ^4.22.1
+  checksum: 83ae54008c09b8e0ae3c59457039866c342c7e28b0d30eebb638a5b51c01432e63fe97695c90645cbc6a8b073a4f9a8b0e75f0818bbf8b4b054e01f4c17d3181
   languageName: node
   linkType: hard
 
@@ -5123,10 +5123,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"data-uri-to-buffer@npm:^5.0.1":
-  version: 5.0.1
-  resolution: "data-uri-to-buffer@npm:5.0.1"
-  checksum: 10958f89c0047b84bd86d572b6b77c9bf238ebe7b55a9a9ab04c90fbf5ab1881783b72e31dc0febdffd30ec914930244f2f728e3629bb8911d922baba129426f
+"data-uri-to-buffer@npm:^6.0.0":
+  version: 6.0.1
+  resolution: "data-uri-to-buffer@npm:6.0.1"
+  checksum: 9140e68c585ae33d950f5943bd476751346c8b789ae80b01a578a33cb8f7f706d1ca7378aff2b1878b2a6d9a8c88c55cc286d88191c8b8ead8255c3c4d934530
   languageName: node
   linkType: hard
 
@@ -5477,9 +5477,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.535":
-  version: 1.4.536
-  resolution: "electron-to-chromium@npm:1.4.536"
-  checksum: 3c1f04f9b7526964a8c0d256eb223231a678b6a76411a547a3cf59aac32b773212e4e6497fa5534c77ee95d7fd634ffa9f18c1eeb72d229d6423eea4b81663e0
+  version: 1.4.539
+  resolution: "electron-to-chromium@npm:1.4.539"
+  checksum: 52ca93d1fdff453f780c35e946ab4c04d4c54ab0e526b2b3a75b7674c33d95bf4ff5325de4406b3881b6f1e5ecac8f82f68d8566f3d99cc2e16a16533a83a9a5
   languageName: node
   linkType: hard
 
@@ -6196,13 +6196,13 @@ __metadata:
   linkType: hard
 
 "fast-xml-parser@npm:^4.0.12":
-  version: 4.3.1
-  resolution: "fast-xml-parser@npm:4.3.1"
+  version: 4.3.2
+  resolution: "fast-xml-parser@npm:4.3.2"
   dependencies:
     strnum: ^1.0.5
   bin:
     fxparser: src/cli/cli.js
-  checksum: eddd19dc95f907d9a932012e9ee6240d5d58f9f4a7179996cc0c5ef377bba15638cb025cf4e820f0895f3d4e6edd03d5e7efa675dcfbf895bb8e0f3355b98126
+  checksum: d507ce2efa5fd13d0a5ba28bd76dd68f2fc30ad8748357c37b70f360d19417866d79e35a688af067d5bceaaa796033fa985206aef9692f7a421e1326b6e73309
   languageName: node
   linkType: hard
 
@@ -6362,9 +6362,9 @@ __metadata:
   linkType: hard
 
 "flow-parser@npm:0.*":
-  version: 0.217.1
-  resolution: "flow-parser@npm:0.217.1"
-  checksum: 968756576ae9862395807c3736cf6faad5db829a092b30d46d84f2605a8e43d31436693dea4caf6cffa2e5227e38ccdbfae2a1cea0d3c1f350106d2ae629d33e
+  version: 0.217.2
+  resolution: "flow-parser@npm:0.217.2"
+  checksum: f209c9a24538edc6308d23e9611cf7bd7032c9f798600ca1b2ac9325be69758290d40516dd67def6c5c846521fea7fc3bab5c1ee00c05354886c83c04b63220a
   languageName: node
   linkType: hard
 
@@ -6610,14 +6610,14 @@ __metadata:
   linkType: hard
 
 "get-uri@npm:^6.0.1":
-  version: 6.0.1
-  resolution: "get-uri@npm:6.0.1"
+  version: 6.0.2
+  resolution: "get-uri@npm:6.0.2"
   dependencies:
     basic-ftp: ^5.0.2
-    data-uri-to-buffer: ^5.0.1
+    data-uri-to-buffer: ^6.0.0
     debug: ^4.3.4
     fs-extra: ^8.1.0
-  checksum: a8aec70e1c67386fbe67f66e344ecd671a19f4cfc8e0f0e14d070563af5123d540e77fbceb6e26566f29846fac864d2862699ab134d307f85c85e7d72ce23d14
+  checksum: 762de3b0e3d4e7afc966e4ce93be587d70c270590da9b4c8fbff888362656c055838d926903d1774cbfeed4d392b4d6def4b2c06d48c050580070426a3a8629b
   languageName: node
   linkType: hard
 
@@ -10934,9 +10934,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-vision-camera@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "react-native-vision-camera@npm:3.1.0"
+"react-native-vision-camera@npm:^3.2.2":
+  version: 3.2.2
+  resolution: "react-native-vision-camera@npm:3.2.2"
   dependencies:
     string-hash-64: ^1.0.3
   peerDependencies:
@@ -10946,7 +10946,7 @@ __metadata:
   peerDependenciesMeta:
     react-native-worklets-core:
       optional: true
-  checksum: ac10e1539d14bbad1cd28bd4a9ec25cd824e5ed81b5381000ec58f1f538b6d737a9fcd78ddc061a3523e38258fe5de19f6de5d0b0094d2ea1c25162c8f1518b3
+  checksum: a2efb8a19036bf8767dd6861b29725e5b0fa7ed2bedfcd17b409b34bfabe88d1dc63f9ea7cb365d0867b326df4608901488841ed1b0ee6c95cda42f737a05db3
   languageName: node
   linkType: hard
 
@@ -13030,7 +13030,7 @@ __metadata:
     react: 18.2.0
     react-native: 0.72.5
     react-native-reanimated: ^3.5.4
-    react-native-vision-camera: ^3.1.0
+    react-native-vision-camera: ^3.2.2
     react-native-worklets-core: ^0.2.0
   languageName: unknown
   linkType: soft
@@ -13057,14 +13057,14 @@ __metadata:
     react: 18.2.0
     react-native: 0.72.5
     react-native-builder-bob: ^0.20.0
-    react-native-vision-camera: ^3.1.0
+    react-native-vision-camera: ^3.2.2
     release-it: ^15.0.0
     turbo: ^1.10.7
     typescript: ^5.0.2
   peerDependencies:
     react: "*"
     react-native: "*"
-    react-native-vision-camera: ">= 2"
+    react-native-vision-camera: ">= 3"
   languageName: unknown
   linkType: soft
 
