@@ -4358,9 +4358,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001541":
-  version: 1.0.30001542
-  resolution: "caniuse-lite@npm:1.0.30001542"
-  checksum: 6cf20e2e1fd4c14f98a3cc73df650903bb5fc896c5b7416ada10c3e2c17e905e3d5688e5a201bfc0eebdf2e3d19e1825e21ad03e4d06f2d50f6b1c9f4b837f98
+  version: 1.0.30001543
+  resolution: "caniuse-lite@npm:1.0.30001543"
+  checksum: 1a65c8b0b93913b6241c7d66e1e1f3ea0f194f7e140eefe500512641c2eb4df285991ec9869a1ba2856ea6f6d21e9f3d7bcd91971b5fb1721e3fa0390feec6f1
   languageName: node
   linkType: hard
 
@@ -5477,9 +5477,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.535":
-  version: 1.4.539
-  resolution: "electron-to-chromium@npm:1.4.539"
-  checksum: 52ca93d1fdff453f780c35e946ab4c04d4c54ab0e526b2b3a75b7674c33d95bf4ff5325de4406b3881b6f1e5ecac8f82f68d8566f3d99cc2e16a16533a83a9a5
+  version: 1.4.540
+  resolution: "electron-to-chromium@npm:1.4.540"
+  checksum: 78a48690a5cca3f89544d4e33a11e3101adb0b220da64078f67e167b396cbcd85044853cb88a9453444796599fe157c190ca5ebd00e9daf668ed5a9df3d0bba8
   languageName: node
   linkType: hard
 
@@ -6971,11 +6971,9 @@ __metadata:
   linkType: hard
 
 "has@npm:^1.0.3":
-  version: 1.0.3
-  resolution: "has@npm:1.0.3"
-  dependencies:
-    function-bind: ^1.1.1
-  checksum: b9ad53d53be4af90ce5d1c38331e712522417d017d5ef1ebd0507e07c2fbad8686fffb8e12ddecd4c39ca9b9b47431afbb975b8abf7f3c3b82c98e9aad052792
+  version: 1.0.4
+  resolution: "has@npm:1.0.4"
+  checksum: 8a11ba062e0627c9578a1d08285401e39f1d071a9692ddf793199070edb5648b21c774dd733e2a181edd635bf6862731885f476f4ccf67c998d7a5ff7cef2550
   languageName: node
   linkType: hard
 
@@ -10850,12 +10848,12 @@ __metadata:
   linkType: hard
 
 "react-devtools-core@npm:^4.27.2":
-  version: 4.28.0
-  resolution: "react-devtools-core@npm:4.28.0"
+  version: 4.28.4
+  resolution: "react-devtools-core@npm:4.28.4"
   dependencies:
     shell-quote: ^1.6.1
     ws: ^7
-  checksum: a5be506a35ca027ba283f0efa7c0c9a818bd8b9b38b77081960423cc038b9f3ab3014970ed9cdd451b72a949bc279399daedb65931e8a44def0fb49c0a69f0a7
+  checksum: 2381f8eed956a030a89e9efff7f224beb59d593ef802b8594d69916e1f7a5e200d26371abe1bcc7a7646afa376d0ca57ccb283f8a33ddc73069fc06f86452927
   languageName: node
   linkType: hard
 
@@ -10951,12 +10949,14 @@ __metadata:
   linkType: hard
 
 "react-native-worklets-core@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "react-native-worklets-core@npm:0.2.0"
+  version: 0.2.1
+  resolution: "react-native-worklets-core@npm:0.2.1"
+  dependencies:
+    string-hash-64: ^1.0.3
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: b7c225253121174e68cfcd36829f9fb3acf5b42f6dde4deb62dbdc196fa63f86c00aa7c970fbe514fd7d7d4de7a7872f07099048d46e623accf83542a083a0e1
+  checksum: 1f01358c7d715ae0838866b43cf437b5e2ac8f7beb8793814a8bc4da9700f0f18935aedaf4b36e56e1e6729f6b205181fb367a7f3d4404b0711be8c894679379
   languageName: node
   linkType: hard
 
@@ -12338,8 +12338,8 @@ __metadata:
   linkType: hard
 
 "terser@npm:^5.15.0":
-  version: 5.20.0
-  resolution: "terser@npm:5.20.0"
+  version: 5.21.0
+  resolution: "terser@npm:5.21.0"
   dependencies:
     "@jridgewell/source-map": ^0.3.3
     acorn: ^8.8.2
@@ -12347,7 +12347,7 @@ __metadata:
     source-map-support: ~0.5.20
   bin:
     terser: bin/terser
-  checksum: 251d1b62d7c651ace29f997cf336ff5d5f8e30c65c8698ab7b831764d9e012ab0640895cb609906fb939a5bdf5143d73b5781c5c8c67b9216c77ce92dafdc0bc
+  checksum: 130f1567af1ffa4ddb067651bb284a01b45b5c83e82b3a072a5ff94b0b00ac35090f89c8714631a4a45972f65187bc149fc7144380611f437e1e3d9e174b136b
   languageName: node
   linkType: hard
 

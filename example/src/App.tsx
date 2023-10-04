@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { Camera, useFrameProcessor } from 'react-native-vision-camera';
-import { scanFaces, type FaceType } from 'vision-camera-face-detector';
-import { runOnJS } from 'react-native-reanimated';
+// import { scanFaces, type FaceType } from 'vision-camera-face-detector';
+import { examplePlugin } from './frame-processors/ExamplePlugin';
+import Reanimated from 'react-native-reanimated';
+
+const ReanimatedCamera = Reanimated.createAnimatedComponent(Camera);
 
 export default function App() {
   const [hasPermission, setHasPermission] = useState(false);
-  const [faces, setFaces] = useState<FaceType[]>();
+  // const [faces, setFaces] = useState<any[]>();
   const [device, setDevice] = useState<any>(null);
 
   useEffect(() => {
@@ -26,23 +29,32 @@ export default function App() {
     _getPermission();
   }, []);
 
-  useEffect(() => {
-    console.log(faces);
-  }, [faces]);
+  // useEffect(() => {
+  //   console.log(faces);
+  // }, [faces]);
 
   const frameProcessor = useFrameProcessor((frame) => {
     'worklet';
-    console.log('frame => ', frame);
-    const scannedFaces = scanFaces(frame);
-    runOnJS(setFaces)(scannedFaces);
+    // const scannedFaces = scanFaces(frame);
+    // runOnJS(setFaces)(scannedFaces);
+
+    console.log(
+      `${frame.timestamp}: ${frame.width}x${frame.height} ${frame.pixelFormat} Frame (${frame.orientation})`
+    );
+    examplePlugin(frame);
   }, []);
 
   return device != null && hasPermission ? (
-    <Camera
+    <ReanimatedCamera
       style={StyleSheet.absoluteFill}
       device={device}
+      fps={30}
       isActive={true}
-      fps={5}
+      enableZoomGesture={false}
+      enableFpsGraph={true}
+      orientation={'portrait'}
+      photo={true}
+      audio={false}
       frameProcessor={frameProcessor}
     />
   ) : null;
