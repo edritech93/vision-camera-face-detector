@@ -7,6 +7,7 @@ import {
   CameraRuntimeError,
   useCameraFormat,
   useCameraDevice,
+  useCodeScanner,
 } from 'react-native-vision-camera';
 // import { scanFaces } from 'vision-camera-face-detector';
 
@@ -16,8 +17,8 @@ const SCREEN_HEIGHT = Platform.select<number>({
   ios: Dimensions.get('window').height,
 }) as number;
 const screenAspectRatio = SCREEN_HEIGHT / SCREEN_WIDTH;
-const enableHdr = true;
-const enableNightMode = true;
+const enableHdr = false;
+const enableNightMode = false;
 const targetFps = 60;
 
 export default function App() {
@@ -25,7 +26,7 @@ export default function App() {
   // const [faces, setFaces] = useState<FaceType[]>();
   const camera = useRef<Camera>(null);
 
-  const device = useCameraDevice('front', {
+  const device = useCameraDevice('back', {
     physicalDevices: [
       'ultra-wide-angle-camera',
       'wide-angle-camera',
@@ -62,13 +63,20 @@ export default function App() {
 
   // const frameProcessor = useFrameProcessor((frame: Frame) => {
   //   'worklet';
-  //   // console.log(
-  //   //   `${frame.timestamp}: ${frame.width}x${frame.height} ${frame.pixelFormat} Frame (${frame.orientation})`
-  //   // );
+  //   console.log(
+  //     `${frame.timestamp}: ${frame.width}x${frame.height} ${frame.pixelFormat} Frame (${frame.orientation})`
+  //   );
   //   const scannedFaces = scanFaces(frame);
-  //   // console.log(new Date().toTimeString(), scannedFaces);
+  //   console.log(new Date().toTimeString(), scannedFaces);
   //   // runOnJS(setFaces)(scannedFaces);
   // }, []);
+
+  const codeScanner = useCodeScanner({
+    codeTypes: ['qr', 'ean-13'],
+    onCodeScanned: (codes) => {
+      console.log(codes[0]?.value);
+    },
+  });
 
   if (device != null && format != null && hasPermission) {
     console.log(
@@ -90,9 +98,10 @@ export default function App() {
         enableFpsGraph={false}
         orientation={'portrait'}
         pixelFormat={'yuv'}
-        photo={true}
+        photo={false}
         video={false}
         audio={false}
+        codeScanner={codeScanner}
         // frameProcessor={frameProcessor}
       />
     );
