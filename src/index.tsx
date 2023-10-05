@@ -4,12 +4,12 @@ import type { Face } from './Face';
 
 const plugin = VisionCameraProxy.getFrameProcessorPlugin('scanFace');
 
-export function scanFaces(frame: Frame): any {
+export function scanFaces(frame: Frame): Face[] {
   'worklet';
   if (plugin == null) {
     throw new Error('Failed to load Frame Processor Plugin!');
   }
-  return plugin.call(frame);
+  return plugin.call(frame) as unknown as Face[];
 }
 
 export type FaceType = Face;
