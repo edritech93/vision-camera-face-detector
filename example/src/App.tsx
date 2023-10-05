@@ -2,13 +2,12 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Dimensions, Platform, StyleSheet } from 'react-native';
 import {
   Camera,
-  useFrameProcessor,
-  type Frame,
+  // useFrameProcessor,
+  // type Frame,
   CameraRuntimeError,
   useCameraFormat,
   useCameraDevice,
 } from 'react-native-vision-camera';
-import Reanimated, { useSharedValue } from 'react-native-reanimated';
 // import { scanFaces } from 'vision-camera-face-detector';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -16,23 +15,16 @@ const SCREEN_HEIGHT = Platform.select<number>({
   android: Dimensions.get('screen').height - 60,
   ios: Dimensions.get('window').height,
 }) as number;
-
-Reanimated.addWhitelistedNativeProps({
-  zoom: true,
-});
+const screenAspectRatio = SCREEN_HEIGHT / SCREEN_WIDTH;
+const enableHdr = true;
+const enableNightMode = true;
+const targetFps = 60;
 
 export default function App() {
   const [hasPermission, setHasPermission] = useState(false);
   // const [faces, setFaces] = useState<FaceType[]>();
-  const enableHdr = false;
-  const enableNightMode = false;
-  const targetFps = 60;
-
   const camera = useRef<Camera>(null);
 
-  const zoom = useSharedValue(0);
-
-  // camera format settings
   const device = useCameraDevice('front', {
     physicalDevices: [
       'ultra-wide-angle-camera',
@@ -40,6 +32,14 @@ export default function App() {
       'telephoto-camera',
     ],
   });
+  const format = useCameraFormat(device, [
+    { fps: targetFps },
+    { videoAspectRatio: screenAspectRatio },
+    { videoResolution: 'max' },
+    { photoAspectRatio: screenAspectRatio },
+    { photoResolution: 'max' },
+  ]);
+  const fps = Math.min(format?.maxFps ?? 1, targetFps);
 
   useEffect(() => {
     async function _getPermission() {
@@ -49,16 +49,7 @@ export default function App() {
     _getPermission();
   }, []);
 
-  const screenAspectRatio = SCREEN_HEIGHT / SCREEN_WIDTH;
-  const format = useCameraFormat(device, [
-    { fps: targetFps },
-    { videoAspectRatio: screenAspectRatio },
-    { videoResolution: 'max' },
-    { photoAspectRatio: screenAspectRatio },
-    { photoResolution: 'max' },
-  ]);
-
-  const fps = Math.min(format?.maxFps ?? 1, targetFps);
+  console.log('format => ', format);
 
   // Camera callbacks
   const onError = useCallback((error: CameraRuntimeError) => {
@@ -69,53 +60,43 @@ export default function App() {
     console.log('Camera initialized!');
   }, []);
 
-  //#region Effects
-  const neutralZoom = device?.neutralZoom ?? 1;
-  useEffect(() => {
-    // Run everytime the neutralZoomScaled value changes. (reset zoom when device changes)
-    zoom.value = neutralZoom;
-  }, [neutralZoom, zoom]);
+  // const frameProcessor = useFrameProcessor((frame: Frame) => {
+  //   'worklet';
+  //   // console.log(
+  //   //   `${frame.timestamp}: ${frame.width}x${frame.height} ${frame.pixelFormat} Frame (${frame.orientation})`
+  //   // );
+  //   const scannedFaces = scanFaces(frame);
+  //   // console.log(new Date().toTimeString(), scannedFaces);
+  //   // runOnJS(setFaces)(scannedFaces);
+  // }, []);
 
-  if (device != null && format != null) {
+  if (device != null && format != null && hasPermission) {
     console.log(
       `Device: "${device.name}" (${format.photoWidth}x${format.photoHeight} photo / ${format.videoWidth}x${format.videoHeight} video @ ${fps}fps)`
     );
-  } else {
-    console.log('re-rendering camera page without active camera');
-  }
-
-  // useEffect(() => {
-  //   console.log(faces);
-  // }, [faces]);
-
-  const frameProcessor = useFrameProcessor((frame: Frame) => {
-    'worklet';
-    console.log(
-      `${frame.timestamp}: ${frame.width}x${frame.height} ${frame.pixelFormat} Frame (${frame.orientation})`
+    return (
+      <Camera
+        ref={camera}
+        style={StyleSheet.absoluteFill}
+        device={device}
+        format={format}
+        fps={fps}
+        hdr={enableHdr}
+        lowLightBoost={device.supportsLowLightBoost && enableNightMode}
+        isActive={true}
+        onInitialized={onInitialized}
+        onError={onError}
+        enableZoomGesture={false}
+        enableFpsGraph={false}
+        orientation={'portrait'}
+        pixelFormat={'yuv'}
+        photo={true}
+        video={false}
+        audio={false}
+        // frameProcessor={frameProcessor}
+      />
     );
-    // const scannedFaces = scanFaces(frame);
-    // runOnJS(setFaces)(scannedFaces);
-  }, []);
-
-  return device != null && hasPermission ? (
-    <Camera
-      ref={camera}
-      style={StyleSheet.absoluteFill}
-      device={device}
-      format={format}
-      fps={fps}
-      hdr={enableHdr}
-      lowLightBoost={device.supportsLowLightBoost && enableNightMode}
-      isActive={true}
-      onInitialized={onInitialized}
-      onError={onError}
-      enableZoomGesture={false}
-      enableFpsGraph={true}
-      orientation={'portrait'}
-      photo={true}
-      video={false}
-      audio={false}
-      frameProcessor={frameProcessor}
-    />
-  ) : null;
+  } else {
+    return null;
+  }
 }

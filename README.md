@@ -71,3 +71,23 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 ## License
 
 MIT
+
+## Troubleshot
+
+Error Clean
+
+Need to edit "/node-modules/react-native-vision-camera/android/build.gradle" line 177. From:
+
+```
+if (task.name.contains("clean")) {
+    task.dependsOn(cleanCmakeCache)
+}
+```
+
+To:
+
+```
+if (task.name.contains("clean") && task.name != "cleanCmakeCache") {
+    task.dependsOn(cleanCmakeCache)
+}
+```
