@@ -2,14 +2,14 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Dimensions, Platform, StyleSheet } from 'react-native';
 import {
   Camera,
-  // useFrameProcessor,
-  // type Frame,
+  useFrameProcessor,
+  type Frame,
   CameraRuntimeError,
   useCameraFormat,
   useCameraDevice,
-  useCodeScanner,
 } from 'react-native-vision-camera';
-// import { scanFaces } from 'vision-camera-face-detector';
+// import { runOnJS } from 'react-native-reanimated';
+import { scanFaces } from 'vision-camera-face-detector';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Platform.select<number>({
@@ -19,14 +19,14 @@ const SCREEN_HEIGHT = Platform.select<number>({
 const screenAspectRatio = SCREEN_HEIGHT / SCREEN_WIDTH;
 const enableHdr = false;
 const enableNightMode = false;
-const targetFps = 60;
+const targetFps = 30;
 
 export default function App() {
   const [hasPermission, setHasPermission] = useState(false);
   // const [faces, setFaces] = useState<FaceType[]>();
   const camera = useRef<Camera>(null);
 
-  const device = useCameraDevice('back', {
+  const device = useCameraDevice('front', {
     physicalDevices: [
       'ultra-wide-angle-camera',
       'wide-angle-camera',
@@ -50,9 +50,10 @@ export default function App() {
     _getPermission();
   }, []);
 
-  console.log('format => ', format);
+  // useEffect(() => {
+  //   console.log('faces => ', faces);
+  // }, [faces]);
 
-  // Camera callbacks
   const onError = useCallback((error: CameraRuntimeError) => {
     console.error(error);
   }, []);
@@ -61,27 +62,21 @@ export default function App() {
     console.log('Camera initialized!');
   }, []);
 
-  // const frameProcessor = useFrameProcessor((frame: Frame) => {
-  //   'worklet';
-  //   console.log(
-  //     `${frame.timestamp}: ${frame.width}x${frame.height} ${frame.pixelFormat} Frame (${frame.orientation})`
-  //   );
-  //   const scannedFaces = scanFaces(frame);
-  //   console.log(new Date().toTimeString(), scannedFaces);
-  //   // runOnJS(setFaces)(scannedFaces);
-  // }, []);
-
-  const codeScanner = useCodeScanner({
-    codeTypes: ['qr', 'ean-13'],
-    onCodeScanned: (codes) => {
-      console.log(codes[0]?.value);
-    },
-  });
+  const frameProcessor = useFrameProcessor((frame: Frame) => {
+    'worklet';
+    // console.log(
+    //   `${frame.timestamp}: ${frame.width}x${frame.height} ${frame.pixelFormat} Frame (${frame.orientation})`
+    // );
+    const scannedFaces = scanFaces(frame);
+    console.log('scannedFaces => ', scannedFaces);
+    // runOnJS(setFaces)(scannedFaces);
+  }, []);
 
   if (device != null && format != null && hasPermission) {
     console.log(
       `Device: "${device.name}" (${format.photoWidth}x${format.photoHeight} photo / ${format.videoWidth}x${format.videoHeight} video @ ${fps}fps)`
     );
+    const pixelFormat = format.pixelFormats.includes('yuv') ? 'yuv' : 'native';
     return (
       <Camera
         ref={camera}
@@ -97,12 +92,11 @@ export default function App() {
         enableZoomGesture={false}
         enableFpsGraph={false}
         orientation={'portrait'}
-        pixelFormat={'yuv'}
+        pixelFormat={pixelFormat}
         photo={false}
         video={false}
         audio={false}
-        codeScanner={codeScanner}
-        // frameProcessor={frameProcessor}
+        frameProcessor={frameProcessor}
       />
     );
   } else {

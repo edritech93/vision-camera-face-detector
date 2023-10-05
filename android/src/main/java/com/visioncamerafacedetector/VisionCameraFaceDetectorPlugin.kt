@@ -5,6 +5,7 @@ import android.graphics.Canvas
 import android.graphics.Matrix
 import android.graphics.Rect
 import android.graphics.RectF
+import android.util.Log
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.WritableMap
 import com.facebook.react.bridge.WritableNativeArray
@@ -18,8 +19,10 @@ import com.google.mlkit.vision.face.FaceDetection
 import com.google.mlkit.vision.face.FaceDetectorOptions
 import com.mrousavy.camera.frameprocessor.Frame
 import com.mrousavy.camera.frameprocessor.FrameProcessorPlugin
+import kotlin.math.ceil
 
 class VisionCameraFaceDetectorPlugin : FrameProcessorPlugin() {
+  private val TAG = "VisionCameraFaceDetectorPlugin"
   private var options = FaceDetectorOptions.Builder()
     .setPerformanceMode(FaceDetectorOptions.PERFORMANCE_MODE_FAST)
     .setContourMode(FaceDetectorOptions.CONTOUR_MODE_NONE)
@@ -27,14 +30,14 @@ class VisionCameraFaceDetectorPlugin : FrameProcessorPlugin() {
     .setMinFaceSize(0.15f)
     .build()
 
-  var faceDetector = FaceDetection.getClient(options)
+  private var faceDetector = FaceDetection.getClient(options)
 
   private fun processBoundingBox(boundingBox: Rect): WritableMap {
     val bounds = Arguments.createMap()
 
     // Calculate offset (we need to center the overlay on the target)
-    val offsetX = (boundingBox.exactCenterX() - Math.ceil(boundingBox.width().toDouble())) / 2.0f
-    val offsetY = (boundingBox.exactCenterY() - Math.ceil(boundingBox.height().toDouble())) / 2.0f
+    val offsetX = (boundingBox.exactCenterX() - ceil(boundingBox.width().toDouble())) / 2.0f
+    val offsetY = (boundingBox.exactCenterY() - ceil(boundingBox.height().toDouble())) / 2.0f
     val x = boundingBox.right + offsetX
     val y = boundingBox.top + offsetY
     bounds.putDouble("x", boundingBox.centerX() + (boundingBox.centerX() - x))
@@ -48,7 +51,7 @@ class VisionCameraFaceDetectorPlugin : FrameProcessorPlugin() {
     return bounds
   }
 
-  private fun processFaceContours(face: Face): WritableMap {
+  private fun processFaceContours(face: Face): MutableMap<String, Any> {
     // All faceContours
     val faceContoursTypes = intArrayOf(
       FaceContour.FACE,
@@ -84,7 +87,7 @@ class VisionCameraFaceDetectorPlugin : FrameProcessorPlugin() {
       "LEFT_CHEEK",
       "RIGHT_CHEEK"
     )
-    val faceContoursTypesMap: WritableMap = WritableNativeMap()
+    val faceContoursTypesMap: MutableMap<String, Any> = HashMap()
     for (i in faceContoursTypesStrings.indices) {
       val contour = face.getContour(faceContoursTypes[i])
       val points = contour!!.points
@@ -95,67 +98,55 @@ class VisionCameraFaceDetectorPlugin : FrameProcessorPlugin() {
         currentPointsMap.putDouble("y", points[j].y.toDouble())
         pointsArray.pushMap(currentPointsMap)
       }
-      faceContoursTypesMap.putArray(
-        faceContoursTypesStrings[contour.faceContourType - 1],
-        pointsArray
-      )
+      faceContoursTypesMap[faceContoursTypesStrings[contour.faceContourType - 1]] = pointsArray
     }
     return faceContoursTypesMap
   }
 
-  override fun callback(frame: Frame, params: MutableMap<String, Any>?): Any? {
-    val mediaImage = frame.image
-    if (mediaImage != null) {
-      try {
-        val image = InputImage.fromMediaImage(mediaImage, Convert().getRotation(frame))
-        val task = faceDetector.process(image)
-        val array = WritableNativeArray()
-        val faces = Tasks.await(task)
-        for (face in faces) {
-          val map: WritableMap = WritableNativeMap()
-          val bmpFrameResult = ImageConvertUtils.getInstance().getUpRightBitmap(image)
-          val bmpFaceResult = Bitmap.createBitmap(
-            Constant.TF_OD_API_INPUT_SIZE,
-            Constant.TF_OD_API_INPUT_SIZE,
-            Bitmap.Config.ARGB_8888
-          )
-          val faceBB = RectF(face.boundingBox)
-          val cvFace = Canvas(bmpFaceResult)
-          val sx = Constant.TF_OD_API_INPUT_SIZE.toFloat() / faceBB.width()
-          val sy = Constant.TF_OD_API_INPUT_SIZE.toFloat() / faceBB.height()
-          val matrix = Matrix()
-          matrix.postTranslate(-faceBB.left, -faceBB.top)
-          matrix.postScale(sx, sy)
-          cvFace.drawBitmap(bmpFrameResult, matrix, null)
-          val imageResult = Convert().getBase64Image(bmpFaceResult)
-          map.putDouble(
-            "rollAngle",
-            face.headEulerAngleZ.toDouble()
-          ) // Head is rotated to the left rotZ degrees
-          map.putDouble(
-            "pitchAngle",
-            face.headEulerAngleX.toDouble()
-          ) // Head is rotated to the right rotX degrees
-          map.putDouble(
-            "yawAngle",
-            face.headEulerAngleY.toDouble()
-          ) // Head is tilted sideways rotY degrees
-          map.putDouble("leftEyeOpenProbability", face.leftEyeOpenProbability!!.toDouble())
-          map.putDouble("rightEyeOpenProbability", face.rightEyeOpenProbability!!.toDouble())
-          map.putDouble("smilingProbability", face.smilingProbability!!.toDouble())
+  override fun callback(frame: Frame, params: Map<String?, Any?>?): Any? {
+    try {
+      val image = InputImage.fromMediaImage(frame.image, Convert().getRotation(frame))
+      val task = faceDetector.process(image)
+      val faces = Tasks.await(task)
+      val array: MutableList<Any> = ArrayList()
+      for (face in faces) {
+        val map: MutableMap<String, Any> = HashMap()
+        val bmpFrameResult = ImageConvertUtils.getInstance().getUpRightBitmap(image)
+        val bmpFaceResult = Bitmap.createBitmap(
+          Constant.TF_OD_API_INPUT_SIZE,
+          Constant.TF_OD_API_INPUT_SIZE,
+          Bitmap.Config.ARGB_8888
+        )
+        val faceBB = RectF(face.boundingBox)
+        val cvFace = Canvas(bmpFaceResult)
+        val sx = Constant.TF_OD_API_INPUT_SIZE.toFloat() / faceBB.width()
+        val sy = Constant.TF_OD_API_INPUT_SIZE.toFloat() / faceBB.height()
+        val matrix = Matrix()
+        matrix.postTranslate(-faceBB.left, -faceBB.top)
+        matrix.postScale(sx, sy)
+        cvFace.drawBitmap(bmpFrameResult, matrix, null)
+        val imageResult: String = Convert().getBase64Image(bmpFaceResult).toString()
+        map["rollAngle"] =
+          face.headEulerAngleZ.toDouble()  // Head is rotated to the left rotZ degrees
+        map["pitchAngle"] =
+          face.headEulerAngleX.toDouble() // Head is rotated to the right rotX degrees
+        map["yawAngle"] = face.headEulerAngleY.toDouble()   // Head is tilted sideways rotY degrees
+        map["leftEyeOpenProbability"] = face.leftEyeOpenProbability!!.toDouble()
+        map["rightEyeOpenProbability"] = face.rightEyeOpenProbability!!.toDouble()
+        map["smilingProbability"] = face.smilingProbability!!.toDouble()
 
-//          WritableMap contours = processFaceContours(face);
-          val bounds = processBoundingBox(face.boundingBox)
-          map.putMap("bounds", bounds)
-          //          map.putMap("contours", contours);
-          map.putString("imageResult", imageResult)
-          array.pushMap(map)
-        }
-        return array
-      } catch (e: Exception) {
-        e.printStackTrace()
+        val contours: MutableMap<String, Any> = processFaceContours(face);
+        val bounds = processBoundingBox(face.boundingBox)
+        map["bounds"] = bounds
+        map["contours"] = contours
+        map["imageResult"] = imageResult
+        array.add(map)
       }
+      Log.d(TAG, "array => $array")
+      return array
+    } catch (e: Exception) {
+      Log.e(TAG, e.printStackTrace().toString())
+      return null
     }
-    return null
   }
 }
