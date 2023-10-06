@@ -3105,7 +3105,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/http-cache-semantics@npm:^4.0.1":
+"@types/http-cache-semantics@npm:^4.0.2":
   version: 4.0.2
   resolution: "@types/http-cache-semantics@npm:4.0.2"
   checksum: 513429786a45d8124f93cc7ea1454b692008190ef743e9fec75a6a3c998309782d216f1e67d7d497ffece9c9212310ae05a8c56e8955492ee400eacdd7620e61
@@ -4257,17 +4257,17 @@ __metadata:
   linkType: hard
 
 "cacheable-request@npm:^10.2.8":
-  version: 10.2.13
-  resolution: "cacheable-request@npm:10.2.13"
+  version: 10.2.14
+  resolution: "cacheable-request@npm:10.2.14"
   dependencies:
-    "@types/http-cache-semantics": ^4.0.1
+    "@types/http-cache-semantics": ^4.0.2
     get-stream: ^6.0.1
     http-cache-semantics: ^4.1.1
     keyv: ^4.5.3
     mimic-response: ^4.0.0
     normalize-url: ^8.0.0
     responselike: ^3.0.0
-  checksum: 1a2e9a20558ff2e23156bf945110f16d08037830a57c7b97ba9a145f6526fff1e1da21b1a1f9f4ee5fda77a482374e1a537b60dc23dab5df506f5a1cea5be9ab
+  checksum: 56f2b8e1c497c91f8391f0b099d19907a7dde25e71087e622b23e45fc8061736c2a6964ef121b16f377c3c61079cf8dc17320ab54004209d1343e4d26aba7015
   languageName: node
   linkType: hard
 
@@ -5477,9 +5477,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.4.535":
-  version: 1.4.542
-  resolution: "electron-to-chromium@npm:1.4.542"
-  checksum: b5bfac82121ce91dbe71ab59fe760881c8c6786ea48814c7effeac92fbff59dffd7327be9a92d381e5c2b1620c824d0bb9a2b392bf6204278e4545f710c9fa98
+  version: 1.4.543
+  resolution: "electron-to-chromium@npm:1.4.543"
+  checksum: 2691478369bb543c22a0e661625beda6c2b3fbbdf0a3af91a12eeda0fdd18447e025d7d9b09f55f87d66e5983a8401a52ba1b26a9e43678f638dc9141ec3e427
   languageName: node
   linkType: hard
 
@@ -6362,9 +6362,9 @@ __metadata:
   linkType: hard
 
 "flow-parser@npm:0.*":
-  version: 0.217.2
-  resolution: "flow-parser@npm:0.217.2"
-  checksum: f209c9a24538edc6308d23e9611cf7bd7032c9f798600ca1b2ac9325be69758290d40516dd67def6c5c846521fea7fc3bab5c1ee00c05354886c83c04b63220a
+  version: 0.218.0
+  resolution: "flow-parser@npm:0.218.0"
+  checksum: f8158ca172d168ce45f36d0141aabea9f7c37ab83398448a12fd43eb286b867612e66bfe02347f4abc06051455a2ab7a9372b8b574481f17151fe84ca4fecf60
   languageName: node
   linkType: hard
 
@@ -6772,11 +6772,11 @@ __metadata:
   linkType: hard
 
 "globals@npm:^13.19.0":
-  version: 13.22.0
-  resolution: "globals@npm:13.22.0"
+  version: 13.23.0
+  resolution: "globals@npm:13.23.0"
   dependencies:
     type-fest: ^0.20.2
-  checksum: 64af5a09565341432770444085f7aa98b54331c3b69732e0de411003921fa2dd060222ae7b50bec0b98f29c4d00b4f49bf434049ba9f7c36ca4ee1773f60458c
+  checksum: 194c97cf8d1ef6ba59417234c2386549c4103b6e5f24b1ff1952de61a4753e5d2069435ba629de711a6480b1b1d114a98e2ab27f85e966d5a10c319c3bbd3dc3
   languageName: node
   linkType: hard
 
@@ -10932,11 +10932,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-vision-camera@npm:^3.3.0":
-  version: 3.3.0
-  resolution: "react-native-vision-camera@npm:3.3.0"
-  dependencies:
-    string-hash-64: ^1.0.3
+"react-native-vision-camera@npm:^3.3.1":
+  version: 3.3.1
+  resolution: "react-native-vision-camera@npm:3.3.1"
   peerDependencies:
     react: "*"
     react-native: "*"
@@ -10944,7 +10942,7 @@ __metadata:
   peerDependenciesMeta:
     react-native-worklets-core:
       optional: true
-  checksum: 1029e11e7a55f4978d8283d85033b8de890ded87fe38888a82eb32f9ea4b490609b802dcb3f8df268cd6ba6b98ad21789ae05f55a89777ccf5a9e18a51ec7c3a
+  checksum: 37814a6b3d6683a6415599c3a688cf6d5ec2b5f07e49ec1f2b5d8659fd2985f88186bef0b71ff9f0681c2ae1f789847f82b065c9dcf76520bbe5ce7824646def
   languageName: node
   linkType: hard
 
@@ -11948,9 +11946,9 @@ __metadata:
   linkType: hard
 
 "spdx-license-ids@npm:^3.0.0":
-  version: 3.0.15
-  resolution: "spdx-license-ids@npm:3.0.15"
-  checksum: 99d567875b50504e1a7359f6da7d03e28db2b855b412ced18310679d091565a44f61ffd2585f19ea53a1192c35f2156c143507b12339dda26ef928547df32002
+  version: 3.0.16
+  resolution: "spdx-license-ids@npm:3.0.16"
+  checksum: 5cdaa85aaa24bd02f9353a2e357b4df0a4f205cb35655f3fd0a5674a4fb77081f28ffd425379214bc3be2c2b7593ce1215df6bcc75884aeee0a9811207feabe2
   languageName: node
   linkType: hard
 
@@ -12539,58 +12537,58 @@ __metadata:
   languageName: node
   linkType: hard
 
-"turbo-darwin-64@npm:1.10.14":
-  version: 1.10.14
-  resolution: "turbo-darwin-64@npm:1.10.14"
+"turbo-darwin-64@npm:1.10.15":
+  version: 1.10.15
+  resolution: "turbo-darwin-64@npm:1.10.15"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-darwin-arm64@npm:1.10.14":
-  version: 1.10.14
-  resolution: "turbo-darwin-arm64@npm:1.10.14"
+"turbo-darwin-arm64@npm:1.10.15":
+  version: 1.10.15
+  resolution: "turbo-darwin-arm64@npm:1.10.15"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-linux-64@npm:1.10.14":
-  version: 1.10.14
-  resolution: "turbo-linux-64@npm:1.10.14"
+"turbo-linux-64@npm:1.10.15":
+  version: 1.10.15
+  resolution: "turbo-linux-64@npm:1.10.15"
   conditions: os=linux & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-linux-arm64@npm:1.10.14":
-  version: 1.10.14
-  resolution: "turbo-linux-arm64@npm:1.10.14"
+"turbo-linux-arm64@npm:1.10.15":
+  version: 1.10.15
+  resolution: "turbo-linux-arm64@npm:1.10.15"
   conditions: os=linux & cpu=arm64
   languageName: node
   linkType: hard
 
-"turbo-windows-64@npm:1.10.14":
-  version: 1.10.14
-  resolution: "turbo-windows-64@npm:1.10.14"
+"turbo-windows-64@npm:1.10.15":
+  version: 1.10.15
+  resolution: "turbo-windows-64@npm:1.10.15"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
 
-"turbo-windows-arm64@npm:1.10.14":
-  version: 1.10.14
-  resolution: "turbo-windows-arm64@npm:1.10.14"
+"turbo-windows-arm64@npm:1.10.15":
+  version: 1.10.15
+  resolution: "turbo-windows-arm64@npm:1.10.15"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
 "turbo@npm:^1.10.7":
-  version: 1.10.14
-  resolution: "turbo@npm:1.10.14"
+  version: 1.10.15
+  resolution: "turbo@npm:1.10.15"
   dependencies:
-    turbo-darwin-64: 1.10.14
-    turbo-darwin-arm64: 1.10.14
-    turbo-linux-64: 1.10.14
-    turbo-linux-arm64: 1.10.14
-    turbo-windows-64: 1.10.14
-    turbo-windows-arm64: 1.10.14
+    turbo-darwin-64: 1.10.15
+    turbo-darwin-arm64: 1.10.15
+    turbo-linux-64: 1.10.15
+    turbo-linux-arm64: 1.10.15
+    turbo-windows-64: 1.10.15
+    turbo-windows-arm64: 1.10.15
   dependenciesMeta:
     turbo-darwin-64:
       optional: true
@@ -12606,7 +12604,7 @@ __metadata:
       optional: true
   bin:
     turbo: bin/turbo
-  checksum: 219d245bb5cc32a9f76b136b81e86e179228d93a44cab4df3e3d487a55dd2688b5b85f4d585b66568ac53166145352399dd2d7ed0cd47f1aae63d08beb814ebb
+  checksum: b494c8bf79355874919e76ee0e4a0a53616e0ae5c7126eb1add50e67d4cd1e445ed9aecf99cb6d81c592b7a43ba91cd7dbf30df70410a44cecedba8b5126095d
   languageName: node
   linkType: hard
 
@@ -12990,13 +12988,13 @@ __metadata:
   linkType: hard
 
 "v8-to-istanbul@npm:^9.0.1":
-  version: 9.1.2
-  resolution: "v8-to-istanbul@npm:9.1.2"
+  version: 9.1.3
+  resolution: "v8-to-istanbul@npm:9.1.3"
   dependencies:
     "@jridgewell/trace-mapping": ^0.3.12
     "@types/istanbul-lib-coverage": ^2.0.1
     convert-source-map: ^2.0.0
-  checksum: b0aee7869fb4ea9415ca7887fb24cbaa59c2c9a811951a332470b47f52b012f2576c68d1529c53f055a4a0c2fd3dd47b62d1d804e5ac1194725da6423e68fa46
+  checksum: 5d592ab3d186b386065dace8e01c543a922a904b3cfac39667de172455a6b3d0e8e1401574fecb8a12092ad0809b5a8fd15f1cc14d0666139a1bb77cd6ac2cf8
   languageName: node
   linkType: hard
 
@@ -13030,7 +13028,7 @@ __metadata:
     react: 18.2.0
     react-native: 0.72.5
     react-native-reanimated: ^3.4.2
-    react-native-vision-camera: ^3.3.0
+    react-native-vision-camera: ^3.3.1
     react-native-worklets-core: ^0.2.1
   languageName: unknown
   linkType: soft
@@ -13057,7 +13055,7 @@ __metadata:
     react: 18.2.0
     react-native: 0.72.5
     react-native-builder-bob: ^0.20.0
-    react-native-vision-camera: ^3.3.0
+    react-native-vision-camera: ^3.3.1
     release-it: ^15.0.0
     turbo: ^1.10.7
     typescript: ^5.0.2
