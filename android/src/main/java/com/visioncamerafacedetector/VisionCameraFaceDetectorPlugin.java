@@ -5,12 +5,17 @@ import static java.lang.Math.ceil;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.ImageFormat;
 import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.YuvImage;
 import android.media.Image;
+import android.util.Base64;
+import android.util.Size;
 
 import androidx.camera.core.ImageProxy;
 
@@ -29,6 +34,8 @@ import com.google.mlkit.vision.face.FaceDetector;
 import com.google.mlkit.vision.face.FaceDetectorOptions;
 import com.mrousavy.camera.frameprocessor.FrameProcessorPlugin;
 
+import java.io.ByteArrayOutputStream;
+import java.nio.ByteBuffer;
 import java.util.List;
 
 public class VisionCameraFaceDetectorPlugin extends FrameProcessorPlugin {
@@ -148,6 +155,7 @@ public class VisionCameraFaceDetectorPlugin extends FrameProcessorPlugin {
           matrix.postScale(sx, sy);
           cvFace.drawBitmap(bmpFrameResult, matrix, null);
           String imageResult = new Convert().getBase64Image(bmpFaceResult);
+          String imageFull = new Convert().getBase64Image(bmpFrameResult);
 
           map.putDouble("rollAngle", face.getHeadEulerAngleZ()); // Head is rotated to the left rotZ degrees
           map.putDouble("pitchAngle", face.getHeadEulerAngleX()); // Head is rotated to the right rotX degrees
@@ -162,6 +170,7 @@ public class VisionCameraFaceDetectorPlugin extends FrameProcessorPlugin {
           map.putMap("bounds", bounds);
 //          map.putMap("contours", contours);
           map.putString("imageResult", imageResult);
+          map.putString("imageFull", imageFull);
 
           array.pushMap(map);
         }
