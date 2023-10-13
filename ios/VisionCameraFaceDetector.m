@@ -1,8 +1,19 @@
 #import <Foundation/Foundation.h>
-#import <VisionCamera/FrameProcessorPlugin.h>
 
-@interface VISION_EXPORT_SWIFT_FRAME_PROCESSOR(scanFaces, VisionCameraFaceDetector)
+#import "VisionCameraFaceDetector.h"
+#if defined __has_include && __has_include("VisionCameraFaceDetector-Swift.h")
+#import "VisionCameraFaceDetector-Swift.h"
+#else
+#import <VisionCameraFaceDetector/VisionCameraFaceDetector-Swift.h>
+#endif
+
+@implementation RegisterPlugins
+
+    + (void) load {
+        [FrameProcessorPluginRegistry addFrameProcessorPlugin:@"scanFace"
+                                              withInitializer:^FrameProcessorPlugin*(NSDictionary* options) {
+            return [[VisionCameraFaceDetector alloc] init];
+        }];
+    }
+
 @end
-
-
-

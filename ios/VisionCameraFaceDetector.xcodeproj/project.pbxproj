@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5E555C0D2413F4C50049A1A2 /* VisionCameraFaceDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* VisionCameraFaceDetector.mm */; };
-		F4FF95D7245B92E800C19C63 /*  VisionCameraFaceDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF95D6245B92E800C19C63 /*  VisionCameraFaceDetector.swift */; };
+		F4FF95D7245B92E800C19C63 /* VisionCameraFaceDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF95D6245B92E800C19C63 /* VisionCameraFaceDetector.swift */; };
+		9B27981679004B82B9224D36 /* VisionCameraFaceDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 317FEB36DF0F4011BB616A6B /* VisionCameraFaceDetector.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,7 @@
 		B3E7B5891CC2AC0600A0062D /* VisionCameraFaceDetector.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisionCameraFaceDetector.mm; sourceTree = "<group>"; };
 		F4FF95D5245B92E700C19C63 /* VisionCameraFaceDetector-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VisionCameraFaceDetector-Bridging-Header.h"; sourceTree = "<group>"; };
 		F4FF95D6245B92E800C19C63 /* VisionCameraFaceDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionCameraFaceDetector.swift; sourceTree = "<group>"; };
+		317FEB36DF0F4011BB616A6B /* VisionCameraFaceDetector.m */ = {isa = PBXFileReference; name = "VisionCameraFaceDetector.m"; path = "VisionCameraFaceDetector.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +58,17 @@
 				B3E7B5891CC2AC0600A0062D /* VisionCameraFaceDetector.mm */,
 				F4FF95D5245B92E700C19C63 /* VisionCameraFaceDetector-Bridging-Header.h */,
 				134814211AA4EA7D00B7C361 /* Products */,
+				605712B8AEC449349C7D660E /* VisionCameraFaceDetector */,
 			);
+			sourceTree = "<group>";
+		};
+		605712B8AEC449349C7D660E /* VisionCameraFaceDetector */ = {
+			isa = PBXGroup;
+			children = (
+				317FEB36DF0F4011BB616A6B /* VisionCameraFaceDetector.m */,
+			);
+			name = VisionCameraFaceDetector;
+			path = VisionCameraFaceDetector;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,7 +97,7 @@
 		58B511D31A9E6C8500147676 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 920;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					58B511DA1A9E6C8500147676 = {
@@ -118,6 +130,7 @@
 			files = (
 				F4FF95D7245B92E800C19C63 /* VisionCameraFaceDetector.swift in Sources */,
 				B3E7B58A1CC2AC0600A0062D /* VisionCameraFaceDetector.mm in Sources */,
+				9B27981679004B82B9224D36 /* VisionCameraFaceDetector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
