@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5E555C0D2413F4C50049A1A2 /* VisionCameraFaceDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* VisionCameraFaceDetector.mm */; };
+		D49E11C32AD92E08005454FA /* Convert.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49E11C22AD92D79005454FA /* Convert.swift */; };
+		D49E11C52AD92E08005454FA /* VisionCameraFaceDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = D49E11C02AD92D79005454FA /* VisionCameraFaceDetector.m */; };
+		D49E11C62AD92E08005454FA /* VisionCameraFaceDetectorModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49E11C12AD92D79005454FA /* VisionCameraFaceDetectorModule.swift */; };
+		D49E11C72AD92E08005454FA /* VisionCameraFaceDetector.mm in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* VisionCameraFaceDetector.mm */; };
 		F4FF95D7245B92E800C19C63 /* VisionCameraFaceDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FF95D6245B92E800C19C63 /* VisionCameraFaceDetector.swift */; };
-		9B27981679004B82B9224D36 /* VisionCameraFaceDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 317FEB36DF0F4011BB616A6B /* VisionCameraFaceDetector.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,9 +29,12 @@
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libVisionCameraFaceDetector.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVisionCameraFaceDetector.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3E7B5891CC2AC0600A0062D /* VisionCameraFaceDetector.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisionCameraFaceDetector.mm; sourceTree = "<group>"; };
+		D49E11BF2AD92D79005454FA /* VisionCameraFaceDetector.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VisionCameraFaceDetector.h; sourceTree = "<group>"; };
+		D49E11C02AD92D79005454FA /* VisionCameraFaceDetector.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VisionCameraFaceDetector.m; sourceTree = "<group>"; };
+		D49E11C12AD92D79005454FA /* VisionCameraFaceDetectorModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionCameraFaceDetectorModule.swift; sourceTree = "<group>"; };
+		D49E11C22AD92D79005454FA /* Convert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convert.swift; sourceTree = "<group>"; };
 		F4FF95D5245B92E700C19C63 /* VisionCameraFaceDetector-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VisionCameraFaceDetector-Bridging-Header.h"; sourceTree = "<group>"; };
 		F4FF95D6245B92E800C19C63 /* VisionCameraFaceDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionCameraFaceDetector.swift; sourceTree = "<group>"; };
-		317FEB36DF0F4011BB616A6B /* VisionCameraFaceDetector.m */ = {isa = PBXFileReference; name = "VisionCameraFaceDetector.m"; path = "VisionCameraFaceDetector.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,21 +59,15 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				D49E11C22AD92D79005454FA /* Convert.swift */,
+				D49E11BF2AD92D79005454FA /* VisionCameraFaceDetector.h */,
+				D49E11C02AD92D79005454FA /* VisionCameraFaceDetector.m */,
+				D49E11C12AD92D79005454FA /* VisionCameraFaceDetectorModule.swift */,
 				F4FF95D6245B92E800C19C63 /* VisionCameraFaceDetector.swift */,
 				B3E7B5891CC2AC0600A0062D /* VisionCameraFaceDetector.mm */,
 				F4FF95D5245B92E700C19C63 /* VisionCameraFaceDetector-Bridging-Header.h */,
 				134814211AA4EA7D00B7C361 /* Products */,
-				605712B8AEC449349C7D660E /* VisionCameraFaceDetector */,
 			);
-			sourceTree = "<group>";
-		};
-		605712B8AEC449349C7D660E /* VisionCameraFaceDetector */ = {
-			isa = PBXGroup;
-			children = (
-				317FEB36DF0F4011BB616A6B /* VisionCameraFaceDetector.m */,
-			);
-			name = VisionCameraFaceDetector;
-			path = VisionCameraFaceDetector;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,9 +127,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D49E11C32AD92E08005454FA /* Convert.swift in Sources */,
+				D49E11C52AD92E08005454FA /* VisionCameraFaceDetector.m in Sources */,
+				D49E11C62AD92E08005454FA /* VisionCameraFaceDetectorModule.swift in Sources */,
+				D49E11C72AD92E08005454FA /* VisionCameraFaceDetector.mm in Sources */,
 				F4FF95D7245B92E800C19C63 /* VisionCameraFaceDetector.swift in Sources */,
-				B3E7B58A1CC2AC0600A0062D /* VisionCameraFaceDetector.mm in Sources */,
-				9B27981679004B82B9224D36 /* VisionCameraFaceDetector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
