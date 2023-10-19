@@ -10934,9 +10934,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-vision-camera@npm:^3.4.0":
-  version: 3.4.0
-  resolution: "react-native-vision-camera@npm:3.4.0"
+"react-native-vision-camera@npm:^3.4.1":
+  version: 3.4.1
+  resolution: "react-native-vision-camera@npm:3.4.1"
   peerDependencies:
     react: "*"
     react-native: "*"
@@ -10944,7 +10944,7 @@ __metadata:
   peerDependenciesMeta:
     react-native-worklets-core:
       optional: true
-  checksum: e3c95d4e0c79139a50c8c3825f42d29fab7e8319a7b99f1c16cb64a2112421c4a254cc496e49f74529148d69e72f15166f927f5926d7de70ca06f85406339ee5
+  checksum: 99b25758addc1821910e704f903cdf595a2061f36d7d46c5c0399a3718b158f32e0520b48443d4d5846927fa8b5ff1fb43d5eb363dcc9c71cee668ef8c5a2dd2
   languageName: node
   linkType: hard
 
@@ -13038,7 +13038,7 @@ __metadata:
     react: 18.2.0
     react-native: 0.72.6
     react-native-reanimated: ^3.5.4
-    react-native-vision-camera: ^3.4.0
+    react-native-vision-camera: ^3.4.1
     react-native-worklets-core: ^0.2.2
   languageName: unknown
   linkType: soft
@@ -13065,7 +13065,7 @@ __metadata:
     react: 18.2.0
     react-native: 0.72.6
     react-native-builder-bob: ^0.20.0
-    react-native-vision-camera: ^3.4.0
+    react-native-vision-camera: ^3.4.1
     react-native-worklets-core: ^0.2.2
     release-it: ^15.0.0
     turbo: ^1.10.7
