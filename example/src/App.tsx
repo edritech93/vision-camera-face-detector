@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Dimensions, Platform, StyleSheet } from 'react-native';
+import { Dimensions, Platform, StyleSheet, View } from 'react-native';
 import {
   Camera,
   useFrameProcessor,
@@ -77,28 +77,38 @@ export default function App() {
     );
     const pixelFormat = format.pixelFormats.includes('yuv') ? 'yuv' : 'native';
     return (
-      <Camera
-        ref={camera}
-        style={StyleSheet.absoluteFill}
-        device={device}
-        format={format}
-        fps={fps}
-        hdr={enableHdr}
-        lowLightBoost={device.supportsLowLightBoost && enableNightMode}
-        isActive={true}
-        onInitialized={onInitialized}
-        onError={onError}
-        enableZoomGesture={false}
-        enableFpsGraph={false}
-        orientation={'portrait'}
-        pixelFormat={pixelFormat}
-        photo={false}
-        video={false}
-        audio={false}
-        frameProcessor={frameProcessor}
-      />
+      <View style={styles.container}>
+        <Camera
+          ref={camera}
+          style={StyleSheet.absoluteFill}
+          device={device}
+          format={format}
+          fps={fps}
+          hdr={enableHdr}
+          lowLightBoost={device.supportsLowLightBoost && enableNightMode}
+          isActive={true}
+          onInitialized={onInitialized}
+          onError={onError}
+          enableZoomGesture={false}
+          enableFpsGraph={false}
+          orientation={'portrait'}
+          pixelFormat={pixelFormat}
+          photo={false}
+          video={false}
+          audio={false}
+          frameProcessor={frameProcessor}
+        />
+      </View>
     );
   } else {
     return null;
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+
+// export default memo(App);
