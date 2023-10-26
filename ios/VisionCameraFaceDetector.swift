@@ -98,10 +98,6 @@ public class VisionCameraFaceDetectorPlugin: FrameProcessorPlugin {
         ]
     }
     
-    @objc public init(withOptions options: [AnyHashable : Any]) {
-        super.init()
-    }
-    
     @objc override public func callback(_ frame: Frame, withArguments arguments: [AnyHashable : Any]?) -> Any? {
         let image = VisionImage(buffer: frame.buffer)
         image.orientation = .up

@@ -2,7 +2,7 @@ import { NativeModules, Platform } from 'react-native';
 import { VisionCameraProxy, type Frame } from 'react-native-vision-camera';
 import type { Face } from './Face';
 
-const plugin = VisionCameraProxy.getFrameProcessorPlugin('scanFace');
+const plugin = VisionCameraProxy.initFrameProcessorPlugin('scanFace');
 
 export function scanFaces(frame: Frame): Face[] {
   'worklet';
@@ -20,16 +20,17 @@ const MSG_ERROR =
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo managed workflow\n';
 
-const VisionCameraFaceDetectorModule = NativeModules.VisionCameraFaceDetectorModule
-  ? NativeModules.VisionCameraFaceDetectorModule
-  : new Proxy(
-      {},
-      {
-        get() {
-          throw new Error(MSG_ERROR);
-        },
-      }
-    );
+const VisionCameraFaceDetectorModule =
+  NativeModules.VisionCameraFaceDetectorModule
+    ? NativeModules.VisionCameraFaceDetectorModule
+    : new Proxy(
+        {},
+        {
+          get() {
+            throw new Error(MSG_ERROR);
+          },
+        }
+      );
 
 export function detectFromBase64(imageString: string): Promise<string> {
   return VisionCameraFaceDetectorModule.detectFromBase64(imageString);

@@ -14,6 +14,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-VisionCameraFaceDetectorExample-VisionCameraFaceDetectorExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-VisionCameraFaceDetectorExample-VisionCameraFaceDetectorExampleTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		D4A162382AEA4B5C00B4165D /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A162372AEA4B5C00B4165D /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-VisionCameraFaceDetectorExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VisionCameraFaceDetectorExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = VisionCameraFaceDetectorExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-VisionCameraFaceDetectorExample-VisionCameraFaceDetectorExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisionCameraFaceDetectorExample-VisionCameraFaceDetectorExampleTests.release.xcconfig"; path = "Target Support Files/Pods-VisionCameraFaceDetectorExample-VisionCameraFaceDetectorExampleTests/Pods-VisionCameraFaceDetectorExample-VisionCameraFaceDetectorExampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		D4A162362AEA4B5B00B4165D /* VisionCameraFaceDetectorExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VisionCameraFaceDetectorExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		D4A162372AEA4B5C00B4165D /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = File.swift; path = VisionCameraFaceDetectorExample/File.swift; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -92,6 +95,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				D4A162372AEA4B5C00B4165D /* File.swift */,
+				D4A162362AEA4B5B00B4165D /* VisionCameraFaceDetectorExample-Bridging-Header.h */,
 			);
 			name = VisionCameraFaceDetectorExample;
 			sourceTree = "<group>";
@@ -207,7 +212,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1500;
 					};
 				};
 			};
@@ -413,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				D4A162382AEA4B5C00B4165D /* File.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,6 +438,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-VisionCameraFaceDetectorExample-VisionCameraFaceDetectorExampleTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = 77MH7DAV5Q;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -460,6 +467,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-VisionCameraFaceDetectorExample-VisionCameraFaceDetectorExampleTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 77MH7DAV5Q;
@@ -503,6 +511,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.123qwe;
 				PRODUCT_NAME = VisionCameraFaceDetectorExample;
+				SWIFT_OBJC_BRIDGING_HEADER = "VisionCameraFaceDetectorExample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -530,6 +539,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.123qwe;
 				PRODUCT_NAME = VisionCameraFaceDetectorExample;
+				SWIFT_OBJC_BRIDGING_HEADER = "VisionCameraFaceDetectorExample-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
