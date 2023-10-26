@@ -36,13 +36,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/rodgomesc/vision-camera-face-detector",
-  "author": "Rodrigo gomes <rodgomesc@gmail.com> (https://github.com/rodgomesc)",
+  "repository": "https://github.com/edritech93/vision-camera-face-detector",
+  "author": "Yudi Edri Alviska <yudiedrialviska@gmail.com> (https://github.com/edritech93)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rodgomesc/vision-camera-face-detector/issues"
+    "url": "https://github.com/edritech93/vision-camera-face-detector/issues"
   },
-  "homepage": "https://github.com/rodgomesc/vision-camera-face-detector#readme",
+  "homepage": "https://github.com/edritech93/vision-camera-face-detector#readme",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },

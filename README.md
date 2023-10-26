@@ -1,4 +1,4 @@
-fork from: https://github.com/rodgomesc/vision-camera-face-detector
+fork from: https://github.com/edritech93/vision-camera-face-detector
 reason: old repo not maintenance
 
 # vision-camera-face-detector
