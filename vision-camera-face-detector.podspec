@@ -16,5 +16,5 @@ Pod::Spec.new do |s|
   s.source_files = "ios/**/*.{h,m,mm,swift}"
 
   s.dependency "React-Core"
-  s.dependency "GoogleMLKit/FaceDetection"
+  s.dependency "GoogleMLKit/FaceDetection", "3.2.0"
 end
