@@ -513,7 +513,7 @@
 				PRODUCT_NAME = VisionCameraFaceDetectorExample;
 				SWIFT_OBJC_BRIDGING_HEADER = "VisionCameraFaceDetectorExample-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5.2;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -540,7 +540,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.123qwe;
 				PRODUCT_NAME = VisionCameraFaceDetectorExample;
 				SWIFT_OBJC_BRIDGING_HEADER = "VisionCameraFaceDetectorExample-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 5.2;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
