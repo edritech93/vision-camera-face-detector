@@ -17,7 +17,7 @@ public func getImageFaceFromBuffer(from sampleBuffer: CMSampleBuffer?, rectImage
     
     if (!rectImage.isNull) {
         let imageRef: CGImage = cgImage.cropping(to: rectImage)!
-        let imageCrop: UIImage = UIImage(cgImage: imageRef, scale: 0.5, orientation: .right)
+        let imageCrop: UIImage = UIImage(cgImage: imageRef, scale: 0.5, orientation: .up)
         return imageCrop
     } else {
         return nil

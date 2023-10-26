@@ -1,5 +1,11 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Dimensions, Platform, StyleSheet, View } from 'react-native';
+import {
+  Animated,
+  Dimensions,
+  Platform,
+  SafeAreaView,
+  StyleSheet,
+} from 'react-native';
 import {
   Camera,
   useFrameProcessor,
@@ -8,7 +14,7 @@ import {
   useCameraFormat,
   useCameraDevice,
 } from 'react-native-vision-camera';
-import { scanFaces } from 'vision-camera-face-detector';
+import { scanFaces, type FaceType } from 'vision-camera-face-detector';
 import { Worklets } from 'react-native-worklets-core';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -23,8 +29,7 @@ const targetFps = 30;
 
 export default function App() {
   const [hasPermission, setHasPermission] = useState(false);
-  // const [faces, setFaces] = useState<FaceType[]>();
-  const [faces, setFaces] = useState<any>(null);
+  const [faces, setFaces] = useState<FaceType[]>([]);
   const setFacesJS = Worklets.createRunInJsFn(setFaces);
 
   const camera = useRef<Camera>(null);
@@ -53,10 +58,6 @@ export default function App() {
     _getPermission();
   }, []);
 
-  useEffect(() => {
-    console.log('faces => ', faces);
-  }, [faces]);
-
   const onError = useCallback((error: CameraRuntimeError) => {
     console.error(error);
   }, []);
@@ -72,12 +73,12 @@ export default function App() {
   }, []);
 
   if (device != null && format != null && hasPermission) {
-    console.log(
-      `Device: "${device.name}" (${format.photoWidth}x${format.photoHeight} photo / ${format.videoWidth}x${format.videoHeight} video @ ${fps}fps)`
-    );
+    // console.log(
+    //   `Device: "${device.name}" (${format.photoWidth}x${format.photoHeight} photo / ${format.videoWidth}x${format.videoHeight} video @ ${fps}fps)`
+    // );
     const pixelFormat = format.pixelFormats.includes('yuv') ? 'yuv' : 'native';
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <Camera
           ref={camera}
           style={StyleSheet.absoluteFill}
@@ -98,7 +99,13 @@ export default function App() {
           audio={false}
           frameProcessor={frameProcessor}
         />
-      </View>
+        {faces && faces.length > 0 && (
+          <Animated.Image
+            source={{ uri: `data:image/png;base64,${faces[0]?.imageResult}` }}
+            style={styles.imageFace}
+          />
+        )}
+      </SafeAreaView>
     );
   } else {
     return null;
@@ -108,5 +115,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  imageFace: {
+    height: 150,
+    width: 150,
+    margin: 16,
   },
 });

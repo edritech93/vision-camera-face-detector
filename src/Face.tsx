@@ -28,6 +28,7 @@ export interface Face {
     RIGHT_EYE: Point[];
     LEFT_CHEEK: Point[];
   };
+  imageResult: string;
 }
 
 type Point = { x: number; y: number };
