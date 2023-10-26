@@ -9,7 +9,7 @@ import com.mrousavy.camera.frameprocessor.FrameProcessorPluginRegistry
 class VisionCameraFaceDetectorPluginPackage : ReactPackage {
   init {
     FrameProcessorPluginRegistry.addFrameProcessorPlugin("scanFace") { options ->
-      VisionCameraFaceDetectorPlugin()
+      VisionCameraFaceDetectorPlugin(options)
     }
   }
 

@@ -20,15 +20,17 @@ import com.mrousavy.camera.frameprocessor.Frame
 import com.mrousavy.camera.frameprocessor.FrameProcessorPlugin
 import kotlin.math.ceil
 
-class VisionCameraFaceDetectorPlugin: FrameProcessorPlugin() {
-  private var options = FaceDetectorOptions.Builder()
+class VisionCameraFaceDetectorPlugin(options: MutableMap<String, Any>?) : FrameProcessorPlugin(
+  options
+) {
+  private var faceDetectorOptions = FaceDetectorOptions.Builder()
     .setPerformanceMode(FaceDetectorOptions.PERFORMANCE_MODE_FAST)
     .setContourMode(FaceDetectorOptions.CONTOUR_MODE_NONE)
     .setClassificationMode(FaceDetectorOptions.CLASSIFICATION_MODE_ALL)
     .setMinFaceSize(0.15f)
     .build()
 
-  private var faceDetector = FaceDetection.getClient(options)
+  private var faceDetector = FaceDetection.getClient(faceDetectorOptions)
 
   private fun processBoundingBox(boundingBox: Rect): WritableMap {
     val bounds = Arguments.createMap()

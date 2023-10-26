@@ -22,14 +22,14 @@ class VisionCameraFaceDetectorModule(reactContext: ReactApplicationContext) :
     return NAME
   }
 
-  private var options = FaceDetectorOptions.Builder()
+  private var faceDetectorOptions = FaceDetectorOptions.Builder()
     .setPerformanceMode(FaceDetectorOptions.PERFORMANCE_MODE_ACCURATE)
     .setContourMode(FaceDetectorOptions.CONTOUR_MODE_ALL)
     .setClassificationMode(FaceDetectorOptions.CLASSIFICATION_MODE_ALL)
     .setMinFaceSize(0.15f)
     .build()
 
-  var faceDetector = FaceDetection.getClient(options)
+  private var faceDetector = FaceDetection.getClient(faceDetectorOptions)
 
   @ReactMethod
   fun detectFromBase64(imageString: String?, promise: Promise) {
