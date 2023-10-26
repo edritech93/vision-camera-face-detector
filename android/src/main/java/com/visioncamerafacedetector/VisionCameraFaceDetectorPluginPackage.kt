@@ -7,9 +7,11 @@ import com.facebook.react.uimanager.ViewManager
 import com.mrousavy.camera.frameprocessor.FrameProcessorPluginRegistry
 
 class VisionCameraFaceDetectorPluginPackage : ReactPackage {
-  init {
-    FrameProcessorPluginRegistry.addFrameProcessorPlugin("scanFace") { options ->
-      VisionCameraFaceDetectorPlugin(options)
+  companion object {
+    init {
+      FrameProcessorPluginRegistry.addFrameProcessorPlugin("scanFace") { options ->
+        VisionCameraFaceDetectorPlugin(options)
+      }
     }
   }
 
